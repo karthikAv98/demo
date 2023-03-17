@@ -8,7 +8,6 @@ body, html {
 .active, .exact-active {
   text-decoration: none;
   border: none;
-
   border-bottom: 1px solid white;
 }
 
