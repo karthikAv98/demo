@@ -2,8 +2,13 @@
 import { ref } from "vue";
 
 const toggle_dropdown = ref(false);
+
 function toggleDropdown() {
   toggle_dropdown.value = !toggle_dropdown.value;
+}
+
+function handleClickOutside() {
+  toggle_dropdown.value = false
 }
 </script>
 
@@ -17,7 +22,7 @@ function toggleDropdown() {
       <router-link to="/about" class="ms-2">About</router-link>
     </div>
     <div class="col-1 d-flex justify-content-center align-items-center">
-      <div class="profile-section">
+      <div v-click-outside="handleClickOutside" class="profile-section">
         <div @click="toggleDropdown" class="profile-image"></div>
         <div v-show="toggle_dropdown" class="dropdown shadow"></div>
       </div>
