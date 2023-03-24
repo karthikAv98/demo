@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 
 const toggle_dropdown = ref(false);
 
@@ -10,12 +11,18 @@ function toggleDropdown() {
 function handleClickOutside() {
   toggle_dropdown.value = false
 }
+
+const router = useRouter()
+
+function goToHome() {
+  router.push("/")
+}
 </script>
 
 <template>
   <div class="header-section row g-0 shadow">
     <div class="col-1 d-flex justify-content-center align-items-center">
-      <div class="title">My App</div>
+      <div @click="goToHome" class="title">My App</div>
     </div>
     <div class="col d-flex justify-content-center align-items-center mt-5">
       <router-link to="/">Home</router-link>
@@ -69,6 +76,7 @@ function handleClickOutside() {
 .title {
   font-weight: 700;
   font-size: 1.5rem;
+  cursor: pointer;
 }
 .header-section {
   color: white;

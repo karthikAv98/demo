@@ -1,10 +1,10 @@
-import { Layout, Task, Project } from "@/views/profile"
+import { Layout, TaskView, Project } from "@/views/profile"
 
 export default {
     path: "/profile",
     component: Layout,
     children: [
-        { path: "task", component: Task },
+        { path: "task", component: TaskView },
         { path: "project", component: Project }
     ]
 }

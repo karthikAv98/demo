@@ -1,36 +1,36 @@
 <script setup lang="ts">
-const {created_date, due_date, task} = defineProps({
-    created_date: {
-        type: String,
+import type { TaskType } from '@/type';
+import type { PropType } from 'vue';
+import { TaskPopup } from "@/components"
+import { ref } from 'vue';
+
+const { detail } = defineProps({
+    detail: {
+        type: Object as PropType<TaskType>,
         required: true
     },
-    due_date: {
-        type: String,
-        required: true
-    },
-    task: {
-        type: String,
-        required: true
-    }
 })
+
+const show_popup = ref(false)
 </script>
 
 <template>
-    <div class="task-container rounded shadow">
+    <TaskPopup @close="show_popup = false" v-if="show_popup"></TaskPopup>
+    <div class="task-container rounded shadow" @click="show_popup = true">
         <div class="mx-3">
             <div class="row">
                 <div class="col">
-                    <h4 class="mt-3">Created at: {{ created_date }}</h4>
+                    <h4 class="mt-3">Created at: {{ detail.created_date }}</h4>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col">
-                    <h2>{{ task }}</h2>
+                    <h2>{{ detail.task }}</h2>
                 </div>
             </div>
         </div>
         <div class="due-section">
-            <p>{{ due_date }}</p>
+            <p>{{ detail.due_date }}</p>
         </div>
     </div>
 </template>

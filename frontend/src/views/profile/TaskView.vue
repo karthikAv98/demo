@@ -1,27 +1,26 @@
 <script setup lang="ts">
-import { Task } from "@/components"
+import { TaskComp } from "@/components"
 import { ref, computed } from 'vue';
+import type { TaskType } from "@/type"
 
 const title = ref("My Tasks")
 
-interface Task {
-  created_date: string,
-  due_date: string,
-  task: string
-}
-
-const task_list = ref(<Task[]>[
+const task_list = ref(<TaskType[]>[
   {
+    id: "1",
     created_date: "2023-01-01",
     due_date: "2023-02-01",
-    task: "Something"
+    task: "Something",
+    updated_date: "2023-03-24"
   },
   {
+    id: "2",
     created_date: "2023-03-01",
     due_date: "2023-02-04",
     task: "Nothing"
   },
   {
+    id: "3",
     created_date: "2023-05-01",
     due_date: "2023-02-07",
     task: "Else"
@@ -61,7 +60,7 @@ const filtered_task_list = computed(() => {
       <div class="col">
         <div class="d-flex flex-wrap gap-5">
           <div v-for="(task, index) in filtered_task_list" :key="index">
-            <Task :created_date="task.created_date" :due_date="task.due_date" :task="task.task"></Task>
+            <TaskComp :detail="task"></TaskComp>
           </div>
         </div>
       </div>

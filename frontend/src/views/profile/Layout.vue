@@ -14,7 +14,4 @@ if(route.path == "/profile") router.push("/profile/task")
 </template>
 
 <style scoped>
-.profile-container {
-    height: 200vh;
-}
 </style>
