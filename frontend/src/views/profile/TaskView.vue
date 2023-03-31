@@ -2,30 +2,12 @@
 import { TaskComp } from "@/components"
 import { ref, computed } from 'vue';
 import type { TaskType } from "@/type"
+import { useTaskStore } from "@/stores";
+
+const taskStore = useTaskStore();
 
 const title = ref("My Tasks")
-
-const task_list = ref(<TaskType[]>[
-  {
-    id: "1",
-    created_date: "2023-01-01",
-    due_date: "2023-02-01",
-    task: "Something",
-    updated_date: "2023-03-24"
-  },
-  {
-    id: "2",
-    created_date: "2023-03-01",
-    due_date: "2023-02-04",
-    task: "Nothing"
-  },
-  {
-    id: "3",
-    created_date: "2023-05-01",
-    due_date: "2023-02-07",
-    task: "Else"
-  }
-])
+const task_list = ref(<TaskType[]>taskStore.task_list)
 
 const filter = ref("")
 

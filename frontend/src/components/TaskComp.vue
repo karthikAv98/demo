@@ -12,11 +12,19 @@ const { detail } = defineProps({
 })
 
 const show_popup = ref(false)
+
+function openPopup() {
+    show_popup.value = true;
+}
+
+function closePopup() {
+    show_popup.value = false;
+}
 </script>
 
 <template>
-    <TaskPopup @close="show_popup = false" v-if="show_popup"></TaskPopup>
-    <div class="task-container rounded shadow" @click="show_popup = true">
+    <TaskPopup @close="closePopup" v-if="show_popup"></TaskPopup>
+    <div class="task-container rounded shadow" @click="openPopup">
         <div class="mx-3">
             <div class="row">
                 <div class="col">

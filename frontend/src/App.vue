@@ -1,5 +1,9 @@
 <script setup lang="ts">
 import { Header } from "@/components";
+import { useTaskStore } from "@/stores"
+
+const taskStore = useTaskStore()
+taskStore.fetchTaskList()
 </script>
 
 <template>
